@@ -1,2 +1,5 @@
 <!--pages/sensors/sensors.wxml-->
 <text>pages/sensors/sensors.wxml</text>
+<view wx:for="{{data}}">
+  {{item}}
+</view>

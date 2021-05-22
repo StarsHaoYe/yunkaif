@@ -12,7 +12,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let that = this;
+    wx.request({
+      url: 'http://39.104.15.103/',
+      data: {},
+      method: 'GET',
+      header: {
+        'content-Type': 'application/json'
+      },
+      success: function (res) {
+        that.setData({
+          data: res.data,
+        });
+      }
+    })
   },
 
   /**
