@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/sensors/sensors",
-    "pages/mine/mine"
+    "pages/mine/mine",
+    "pages/iot/iottest"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -22,7 +23,7 @@
         "selectedIconPath": "icon/home.png"
       },
       {
-        "pagePath": "pages/sensors/sensors",
+        "pagePath": "pages/iot/iottest",
         "text": "传感器",
         "iconPath": "icon/_videocamera.png",
         "selectedIconPath": "icon/videocamera.png"

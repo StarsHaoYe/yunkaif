@@ -1,0 +1,17 @@
+<view class="body">
+	<view class="monitor">
+		<view class="flex-row">
+			<text class="border-right-bottom">温度\n{{roomTemp}} °C</text>
+			<text class="border-bottom">湿度\n{{roomHumidity}} %</text>
+		</view>
+		<view class="flex-row">
+			<text class="border-right-bottom">二氧化碳浓度\n{{co2}} ppm</text>
+			<text class="border-bottom">光照度\n{{lightLux}} Lux</text>
+		</view>
+		<view class="flex-row">
+			<text class="border-right-bottom">声音分贝值\n{{soundDecibel}} dB</text>
+			<text class="border-bottom">PM25浓度\n{{pm25}} μg/m³</text>
+		</view>
+    <button disabled="{{buttonDisabled}}" hover-class="hover" bindtap="changeDeviceStatus">{{openedDevice?"关闭设备":"打开设备"}}</button>
+	</view>
+</view>

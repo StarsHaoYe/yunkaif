@@ -14,6 +14,11 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    as: "fckba2VKNHJvCTeJQfZWFOq9rZWALW",//AccessKey Secret
+    productKey: "a13oNCbs4id",
+    deviceName: "test01",
+    endpoint: "https://iot.cn-shanghai.aliyuncs.com",
+    ai: "LTAI5tMcoYhyUc4CAGZs6Pfa", //AccessKeyId
+    apiVersion: '2018-01-20'
   }
 })

@@ -14,7 +14,7 @@ Page({
   onLoad: function (options) {
     let that = this;
     wx.request({
-      url: 'http://39.104.15.103/',
+      url: 'https://192.168.1.12/',
       data: {},
       method: 'GET',
       header: {
