@@ -50,7 +50,7 @@ Page({
         method: "POST"
       },
       (res) => {
-        console.log("success")
+        console.log("success1")
         console.log(res) //查看返回response数据
         if (res.data.Code) {
           console.log(res.data.ErrorMessage)
@@ -76,7 +76,7 @@ Page({
         this.setPropertyData(null)
       },
       (res) => {
-        console.log("complete")
+        console.log("complete1")
       })
   },
 
@@ -86,12 +86,12 @@ Page({
     if (infos) {
       var propertys = that.convertPropertyStatusInfo(infos)
       that.setData({
-        roomTemp: propertys.CurrentTemperature,
-        roomHumidity: propertys.RelativeHumidity,
-        co2: propertys.CO2Value,
-        lightLux: propertys.LightLuxValue,
-        soundDecibel: propertys.SoundDecibelValue,
-        pm25: propertys.PM25Value,
+        roomTemp: propertys.IndoorTemperature,
+        roomHumidity: propertys.CurrentHumidity,
+        co2: propertys.data,
+        //lightLux: propertys.LightLuxValue,
+       // soundDecibel: propertys.SoundDecibelValue,
+       // pm25: propertys.PM25Value,
       })
     } else {
       that.setData({
@@ -132,7 +132,7 @@ Page({
         method: "POST"
       },
       (res) => {
-        console.log("success")
+        console.log("success2")
         console.log(res) //查看返回response数据
         that.setData({
           openedDevice: !that.data.openedDevice
@@ -148,7 +148,7 @@ Page({
         })
       },
       (res) => {
-        console.log("complete")
+        console.log("complete2")
         that.setData({
           buttonDisabled: false
         })

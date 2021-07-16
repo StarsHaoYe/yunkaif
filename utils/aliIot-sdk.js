@@ -1,9 +1,9 @@
-var crypto = require("/cryptojs-master/cryptojs.js").Crypto
-var uuid = require("/uuid.js")
+import { Crypto as crypto } from "/cryptojs-master/cryptojs.js"
+import { uuid as _uuid } from "/uuid.js"
 const app = getApp()
 
 //格式化数字
-const formatNumber = n => {
+function formatNumber(n) {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
@@ -119,7 +119,7 @@ const _buildParams = () => {
   var defaultParams = {
     Format: 'JSON',
     SignatureMethod: 'HMAC-SHA1',
-    SignatureNonce: uuid.uuid(),
+    SignatureNonce: _uuid(),
     SignatureVersion: '1.0',
     Timestamp: timestamp(),
     AccessKeyId: app.globalData.ai,
@@ -185,6 +185,6 @@ const request = (params, opts, success, fail, complete) => {
   })
 }
 
-module.exports = {
-  request: request
+module.exports = { 
+  request: request 
 }
