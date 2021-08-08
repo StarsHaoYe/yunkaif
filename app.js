@@ -20,5 +20,7 @@ App({
     endpoint: "https://iot.cn-shanghai.aliyuncs.com",
     ai: "LTAI5tMcoYhyUc4CAGZs6Pfa", //AccessKeyId
     apiVersion: '2018-01-20'
-  }
+  },
+  // 引入`towxml3.0`解析方法
+	towxml:require('./dist/index'),
 })

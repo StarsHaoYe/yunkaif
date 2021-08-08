@@ -1,0 +1,229 @@
+/* pages/shouye/shouye.wxss */
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding:0 0;
+  box-sizing: border-box;
+} 
+.header{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  background:  #2ef1c1;
+  height: 340rpx;
+}
+.gps{
+  width: 100%;
+  height: 36rpx;
+  flex-direction: row;
+  text-align: center;
+  color:rgb(106, 106, 114);
+  font-size: 34rpx;
+}
+.gps>image{
+  width: 36rpx;
+  height: 40rpx;
+}
+.level{
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color:white;
+  font-size: 60rpx;
+  padding-top:50rpx;
+  /*width: 100%;
+  height: 100%;*/
+}
+/*“优”下面设置提示语*/
+.tips{
+  font-size:30rpx;
+  text-decoration:underline; 
+  padding-right: 40rpx;
+  padding-left: 40rpx;
+}
+.font-switch{
+  width: 100%;
+  position: relative;/*父元素位置要设置为相对*/
+}
+.font{
+  color:black;
+  font-size:36rpx;
+  font-weight: bold;
+  font-family:KaiTi;
+  position: absolute; 
+  left: 0; /* 靠左 */
+}
+.switch-view {
+  position: absolute; /* 约束所在位置的子元素的位置要设置成绝对 */
+  right: 0; /* 靠右 */
+}
+
+.table {
+  width: 100%;
+  height: 360rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25rpx;
+  padding: 3px 0px;
+}
+
+.table-row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 3px 0px;
+}
+.table-column{
+  width:240rpx;
+  height:150rpx;
+  display: flex;
+  font-family: KaiTi;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: 0px 3px 5px 1px gainsboro;
+  border-radius: 3px;
+}
+.table-column-row{
+  width:150rpx;
+  height:240rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  align-items: center;
+  
+}
+
+.table-level{
+  color: #1AAD19;
+  font-size: 44rpx;
+}
+
+/*
+.table-column>text{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  flex-shrink: 0;
+  height: 80px;
+}*/
+.flex-row > view {
+  width: 50%;
+  height: 80px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.flex-row > text {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  flex-shrink: 0;
+  height: 80px;
+}
+
+button {
+  font-weight: bold;
+  flex-shrink: 0;
+  margin: 20px 30px;
+  border-radius: 30px;
+  background: #673bb7;
+  color: white;
+  width: 100px;
+  border: 0px;
+}
+
+.hover {
+  background-color: #1797eb;
+  color: white;
+}
+
+.border-right {
+  border-right: 1px dashed #1797eb;
+}
+
+.border-bottom {
+  border-bottom: 1px dashed #1797eb;
+}
+
+.border-right-bottom {
+  border-bottom: 1px dashed #1797eb;
+  border-right: 1px dashed #1797eb;
+}
+.page-body{
+  width: 100%;
+  height: 2000rpx;
+}
+.scroll-view-item{
+  height: 300rpx;
+}
+.scroll-view-item_H{
+  display: inline-block;
+  width: 100%;
+  height: 300rpx;
+}
+.demo-text-1{
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background-color: #1AAD19;
+  color: #FFFFFF;
+  font-size: 36rpx;
+}
+.demo-text-1:before{
+  content: 'A';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.demo-text-2{
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background-color: #2782D7;
+  color: #FFFFFF;
+  font-size: 36rpx;
+}
+.demo-text-2:before{
+  content: 'B';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.demo-text-3{
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background-color: #F1F1F1;
+  color: #353535;
+  font-size: 36rpx;
+}
+.demo-text-3:before{
+  content: 'C';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.intro {
+  margin: 10px;
+  text-align: center;
+}

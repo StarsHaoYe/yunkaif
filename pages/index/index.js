@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
+    motto: 'Welcome!',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -23,6 +23,11 @@ Page({
         canIUseGetUserProfile: true
       })
     }
+    setTimeout(function () {
+      wx.redirectTo({
+        url: '../shouye/shouye',//跳转的页面
+      })
+    },2000)//等待时间
   },
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗

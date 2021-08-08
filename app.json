@@ -1,38 +1,39 @@
 {
-  "pages":[
+  "pages": [ 
+    "pages/shouye/shouye",
     "pages/index/index",
     "pages/logs/logs",
     "pages/sensors/sensors",
     "pages/mine/mine",
     "pages/iot/iottest"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#66cccc",
     "navigationBarTitleText": "空气质量传感云平台",
-    "navigationBarTextStyle":"white",
-    "enablePullDownRefresh":true,
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true,
     "backgroundColor": "#ffffff"
   },
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/shouye/shouye",
         "text": "首页",
         "iconPath": "icon/_home.png",
         "selectedIconPath": "icon/home.png"
       },
       {
         "pagePath": "pages/iot/iottest",
-        "text": "传感器",
-        "iconPath": "icon/_videocamera.png",
-        "selectedIconPath": "icon/videocamera.png"
+        "text": "设置",
+        "iconPath": "icon/_setting.png",
+        "selectedIconPath": "icon/setting.png"
       },
       {
         "pagePath": "pages/mine/mine",
-        "text": "我的",
-        "iconPath": "icon/_my.png",
-        "selectedIconPath": "icon/my.png"
+        "text": "关于",
+        "iconPath": "icon/_关于.png",
+        "selectedIconPath": "icon/关于.png"
       }
     ],
     "color": "#6E6E6E",

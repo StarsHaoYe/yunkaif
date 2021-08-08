@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "towxml":"/towxml/towxml"
+
+  },
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark"
+}

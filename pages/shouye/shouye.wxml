@@ -1,0 +1,119 @@
+<!--pages/shouye/shouye.wxml-->
+<page-meta
+  background-text-style="{{bgTextStyle}}"
+  scroll-top="{{scrollTop}}"
+  scroll-duration="1000"
+  page-style="color: black"
+  bindscroll="pageScroll"
+  bindresize="pageResize"
+  bindscrolldone="pageScrollDone"
+>
+<navigation-bar
+    title="{{nbTitle}}"
+    loading="{{nbLoading}}"
+    background-color="#66cccc"
+    color-animation-timing-func="easeIn"
+/>
+</page-meta>
+
+<view class="container">
+  <view class="header">
+    <view class="gps">
+      <image src='/icon/定位.png' mode='widthFix'></image>
+      <text>{{GPS}}</text>
+    </view>
+    <view class="level">
+    <text>{{level}}\n</text>
+    <text class="tips">{{tips}}</text>
+    </view>
+  </view>
+  <view class="font-switch">
+    <text class="font">污染物浓度</text>
+    <switch class='switch-view' checked="{{deviceSwitch}}" bindchange="changeDeviceStatus" type='switch'/>
+  </view>
+  
+  <view class="table">
+    <view class="table-row">
+      
+      <view class="table-column">
+        <text class="table-level">优</text> 
+        <text>温度\n{{Temp}}°C</text> 
+      </view>
+      <view class="table-column">
+        <text class="table-level">优</text> 
+        <text>湿度\n{{Humidity}} %</text>  
+      </view>
+      <view class="table-column">
+        <text class="table-level">优</text>
+        <view class="table-column-row">
+        <towxml nodes="{{article}}"/>
+        <text>{{co2}} %</text></view> 
+      </view>
+
+    </view>
+		<view class="table-row">
+
+		  <view class="table-column">
+        <text class="table-level">优</text> 
+        <text>温度\n{{Temp}}°C</text> 
+      </view>
+      <view class="table-column">
+        <text class="table-level">优</text> 
+        <text>湿度\n{{Humidity}} %</text>  
+      </view>
+      <view class="table-column">
+        <text class="table-level">优</text> 
+        <text>co2</text>
+      </view>
+     
+    </view>
+  </view>
+  <!--<button disabled="{{switch}}" hover-class="hover" bindtap="changeDeviceStatus">{{openedDevice?"关闭设备":"打开设备"}}</button>-->
+  <view class="font-switch"><text class="font">历史变化</text></view>
+
+</view>
+<!--<navigator url="./new">
+  <button>跳另一个页面</button>
+</navigator>-->
+<button bindtap="scrollTo100">点击跳到 200rpx 处</button>
+<view class="intro">
+  <text>
+    启动 5s 后会尝试改变页面样式
+    这个页面文字是绿色的，而且要长
+    长
+    A 
+    A 
+     A 
+     A 
+     A 
+     AA
+     AA
+ AAAA
+ AA
+ AA
+ A 
+    A 
+     A 
+     A 
+     A 
+     AA
+     AA
+ AAAA
+ AA
+ AA
+ AA
+ A 
+    A 
+     A 
+     A 
+     A 
+     AA
+     AA
+ AAAA
+ AA
+ AA
+ AA
+ AA
+  </text>
+  <towxml nodes="{{article}}"/> 
+</view>

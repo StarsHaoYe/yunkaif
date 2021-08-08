@@ -1,0 +1,19 @@
+{
+  "name": "yunkaif",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StarsHaoYe/yunkaif.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StarsHaoYe/yunkaif/issues"
+  },
+  "homepage": "https://github.com/StarsHaoYe/yunkaif#readme"
+}
