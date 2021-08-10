@@ -27,10 +27,7 @@
     <text class="tips">{{tips}}</text>
     </view>
   </view>
-  <view class="font-switch">
-    <text class="font">污染物浓度</text>
-    <switch class='switch-view' checked="{{deviceSwitch}}" bindchange="changeDeviceStatus" type='switch'/>
-  </view>
+  <view class="font">污染物浓度</view>
   
   <view class="table">
     <view class="table-row">
@@ -68,52 +65,16 @@
      
     </view>
   </view>
-  <!--<button disabled="{{switch}}" hover-class="hover" bindtap="changeDeviceStatus">{{openedDevice?"关闭设备":"打开设备"}}</button>-->
-  <view class="font-switch"><text class="font">历史变化</text></view>
+  <view class="font">历史变化</view>
 
 </view>
 <!--<navigator url="./new">
   <button>跳另一个页面</button>
-</navigator>-->
+</navigator>
 <button bindtap="scrollTo100">点击跳到 200rpx 处</button>
 <view class="intro">
   <text>
     启动 5s 后会尝试改变页面样式
-    这个页面文字是绿色的，而且要长
-    长
-    A 
-    A 
-     A 
-     A 
-     A 
-     AA
-     AA
- AAAA
- AA
- AA
- A 
-    A 
-     A 
-     A 
-     A 
-     AA
-     AA
- AAAA
- AA
- AA
- AA
- A 
-    A 
-     A 
-     A 
-     A 
-     AA
-     AA
- AAAA
- AA
- AA
- AA
- AA
   </text>
   <towxml nodes="{{article}}"/> 
-</view>
+</view>-->

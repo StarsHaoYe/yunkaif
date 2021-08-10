@@ -11,18 +11,11 @@ Page({
     PM10: "--",
     level:"优",
     tips:"大自然的每一个领域都是美妙绝伦的。————亚里士多德",
-    openedDevice: false,
-    deviceSwitch: false,//switch
     //下面三个数据有关下拉刷新
     bgTextStyle: 'dark',
     scrollTop: undefined,
-    nbLoading: false,
-    
+    nbLoading: false, 
   },
-  /**switch
-  switchChange: function (e){
-    console.log(`Switch样式点击后是否选中：`, e.detail.value)
-  },*/
   //下拉刷新 待修改！
   onLoad() {
     var math = '$$ CO_2 $$'
@@ -111,18 +104,13 @@ setPropertyData: function (infos) {
       Temp: propertys.IndoorTemperature,
       Humidity: propertys.CurrentHumidity,
       co2: propertys.data,
-      //lightLux: propertys.LightLuxValue,
-     // soundDecibel: propertys.SoundDecibelValue,
-     // pm25: propertys.PM25Value,
     })
   } else {
     that.setData({
       Temp: "--",
       Humidity: "--",
       co2: "--",
-      GPS:"无法获取位置信息",
-      soundDecibel: "--",
-      PM10: "--"
+      GPS:"无法获取位置信息"
     })
   }
 },
@@ -136,47 +124,6 @@ convertPropertyStatusInfo: function (infos) {
   return data
 },
 
-//调用服务改变设备状态
-changeDeviceStatus: function () {
-  var that = this
-  //防止重复点击
-  /*that.setData({
-    deviceSwitch: true
-  })*/
-  
-  aliSdk.request({
-      Action: "InvokeThingService",
-      ProductKey: app.globalData.productKey,
-      DeviceName: app.globalData.deviceName,
-      Identifier: that.data.openedDevice ? "CloseDevice" : "OpenDevice",
-      Args: "{}" //无参服务，所以传空
-    }, {
-      method: "POST"
-    },
-    (res) => {
-      console.log("success2")
-      console.log(res) //查看返回response数据
-      that.setData({
-        openedDevice: !that.data.openedDevice,
-        deviceSwitch: true
-      })
-    },
-    (_res) => {
-      console.log("fail")
-      wx.showToast({
-        title: '网络连接失败',
-        icon: 'none',
-        duration: 1000,
-        complete: () => {}
-      })
-    },
-    (_res) => {
-      console.log("complete2")
-      that.setData({
-        deviceSwitch: false
-      })
-    })
-},
 //跳动到某个位置  以下皆是
   scrollTo100: function () {
     this.setData({
