@@ -19,8 +19,9 @@ Page({
   //下拉刷新 待修改！
   onLoad() {
     var math = '$$ CO_2 $$'
+
     let result = app.towxml(math, 'markdown', {
-      //base: 'https://xxx.com', // 相对资源的base路径
+      base: 'http://towxml.vvadd.com/?tex', // 相对资源的base路径
       theme: 'light', // 主题，默认`light`
       events: { // 为元素绑定的事件方法
         tap: (e) => {

@@ -89,44 +89,17 @@
   height:240rpx;
   display: flex;
   flex-direction: column;
+  /*background-color: coral;*/
   justify-content:flex-start;
   align-items: center;
   
 }
-
+.table-column-row>text{
+  margin-top: 0cm;
+}
 .table-level{
   color: #1AAD19;
   font-size: 44rpx;
-}
-
-/*
-.table-column>text{
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-  flex-shrink: 0;
-  height: 80px;
-}*/
-.flex-row > view {
-  width: 50%;
-  height: 80px;
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-}
-
-
-.flex-row > text {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-  flex-shrink: 0;
-  height: 80px;
 }
 
 button {

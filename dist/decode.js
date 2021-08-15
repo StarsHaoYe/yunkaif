@@ -1,4 +1,4 @@
-const config = require('./config');
+import { events } from './config';
 
 Component({
 	options: {
@@ -14,7 +14,7 @@ Component({
 		attached: function () {
 			const _ts = this;
 
-			config.events.forEach(item => {
+			events.forEach(item => {
 				_ts['_' + item] = function (...arg) {
 					if (global._events && typeof global._events[item] === 'function') {
 						global._events[item](...arg);
