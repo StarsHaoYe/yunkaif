@@ -1,15 +1,13 @@
 <!--pages/mine/mine.wxml-->
-<text>pages/mine/mine.wxml</text>
-<import src="../template/now-template.wxml" />
-<template name="sevenDays">
-  <view class='template-sevendays'>
-    <view class='week' wx:if="{{index==0}}">{{item.week.week+"  (今天)"}}</view>
-        <view class='week' wx:else>{{item.week.week+" ("+item.week.month+"/"+item.week.day+")"}}</view>
-
-    <view class='condition' wx:if="{{isnight}}">{{item.cond.txt_n}}</view>
-    <view wx:else class='condition'>{{item.cond.txt_d}}</view>
-    <view class='hight-temperature'>{{item.tmp.max+"°"}}</view>
-    <view class='low-temperature'>{{item.tmp.min+"°"}}</view>
-  </view>
-</template>
+<view class="mineContainer">
+  <block wx:if="{{!hasUserInfo}}">
+    <image class="avatarUrl" src="/icon/missing-face.png"></image>
+    <button wx:if="{{canIuseGetUserProfile}}" bindtap="getUserProfile">获取用户信息1</button>
+  </block>
+  <block wx:else>
+    <image class="avatarUrl" src="{{userInfo.avatarUrl}}"></image>
+    <text class="userName">{{userInfo.nickName}}</text>
+  </block>
+  
+</view>
 

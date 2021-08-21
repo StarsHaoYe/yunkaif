@@ -1,0 +1,49 @@
+
+<view class="form-box">
+<form bindsubmit="formSubmit">
+  <input name="name" placeholder="用户名/邮箱、手机"></input>
+  <input name="password" placeholder="密码"></input>
+  <button class="view-button" form-type="submit" bindtap="formSubmit">保存</button>
+</form>
+</view>
+
+<view class="container">
+  <view class="font">标准选择</view>
+  <radio-group class="label" bindchange="radioChange">
+    <view class="label-item" wx:for="{{items}}">
+      <radio id="{{item.name}}" value="{{item.name}}" checked="{{item.checked}}"></radio>
+      <label class="label-text" for="{{item.name}}"><text>{{item.name}}</text></label>
+    </view>
+  </radio-group>
+
+  <view class="font">详细数据</view>
+  <view class="box">
+    <form catchsubmit="formSubmit">
+      <view class="biaozhun-head">
+        <view class="biaozhun-name">检测量</view>
+        <view class="biaozhun-detail">标准</view>
+      </view>
+      <view class="biaozhun">
+        <view class="biaozhun-name">温度</view>
+        <view class="biaozhun-detail">{{standard.Temp}}摄氏度</view>
+      </view>
+      <view class="biaozhun">
+        <view class="biaozhun-name">湿度</view>
+        <view class="biaozhun-detail">{{standard.Humidity}}%</view>
+      </view>
+      <view class="biaozhun">
+        <view class="biaozhun-name">CO2</view>
+        <view class="biaozhun-detail">{{standard.co2}}%</view>
+      </view>
+      <view class="biaozhun">
+        <view class="biaozhun-name">PM2.5</view>
+        <view class="biaozhun-detail">{{standard.PM25}}</view>
+      </view>
+      <view class="biaozhun">
+        <view class="biaozhun-name">PVOC</view>
+        <view class="biaozhun-detail">{{standard.PVOC}}</view>
+      </view>
+      <button class="view-button" form-type="submit" bindtap="formSubmit">保存</button>
+    </form>
+  </view>
+</view>

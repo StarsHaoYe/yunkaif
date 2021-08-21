@@ -1,18 +1,37 @@
-// pages/sensors/sensors.js
+// pages/biaozhun/biaozhun.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    items:[
+      {value: 'CHN', name: '中国', checked: 'true'},
+      {value: 'USA', name: '美国', checked: 'false'},
+      {value: 'EU', name: '欧盟', checked: 'false'},
+      {value: 'FRE', name: '自定义', checked: 'false'}
+    ]
+  },
 
+  radioChange(e) {
+    const checked = e.detail.value
+    const changed = {}
+    for (let i = 0; i < this.data.items.length; i++) {
+      if (checked.indexOf(this.data.items[i].name) !== -1) {
+        changed['items[' + i + '].checked'] = true
+      } else {
+        changed['items[' + i + '].checked'] = false
+      }
+    }
+    this.setData(changed)
+    
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
 
   /**
