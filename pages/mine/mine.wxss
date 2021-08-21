@@ -1,29 +1,29 @@
-/* pages/mine/mine.wxss */
-/*@import "../template/now-template.wxss";*/
-.template-sevendays {
-  width: 100%;
-  height: 30px;
+/* pages/mine/mine.wxss*/
+
+.mineContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
 }
 
-.week {
-  margin-left: 10px;
-  flex: 4;
+.avatarUrl {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  margin: 100rpx;
 }
 
-.condition {
+.userName {
+  font-size: 32rpx;
+  margin: 10rpx;
+}
+
+.one {
+  width: 300rpx;
+  height: 80rpx;
+  line-height: 80rpx;
   text-align: center;
-  flex: 4;
-  /* width: 40%; */
-}
-
-.hight-temperature {
-  text-align: center;
-  flex: 1;
-}
-
-.low-temperature {
-  text-align: center;
-  flex: 1;
+  font-size: 28rpx;
+  border: 1rpx solid #333;
+  border-radius: 10rpx;
 }

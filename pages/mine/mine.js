@@ -5,14 +5,43 @@ Page({
    * 页面的初始数据
    */
   data: {
+    msg:"hello world!",
+    userInfo:{},
+    hasUserInfo:false,
+    canIuseGetUserProfile:false
 
+  },
+
+  // 获取用户信息
+  getUserProfile(e){
+    wx.getUserProfile({
+      desc: '用于用户登录',
+      success: (res) => {
+        this.setData({
+          userInfo:res.userInfo,
+          hasUserInfo:true
+        }),
+        console.log(res)
+      }
+    })
+  },
+
+  toLogs(){
+    wx.navigateTo({
+      url: '/pages/logs/logs', 
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if (wx.getUserProfile) {
+      this.setData({
+        canIuseGetUserProfile:true
+      })
+    }
+    
   },
 
   /**

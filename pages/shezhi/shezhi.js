@@ -1,18 +1,37 @@
-// pages/sensors/sensors.js
+// pages/shezhi/shezhi.js
+const app = getApp()
 Page({
 
+  
   /**
    * 页面的初始数据
    */
   data: {
-
+    shebeiList:[],//设备预览数据
+    standard:{}//气体标准展示
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    console.log(app);
+    this.setData({
+      shebeiList:app.globalData.shebeiList,
+      standard:app.globalData.standard
+    })
+  },
+
+  toSensors(){
+    wx.navigateTo({
+      url: '../sensors/sensors',
+    })
+  },
+
+  toBiaozhun(){
+    wx.navigateTo({
+      url: '../biaozhun/biaozhun',
+    })
   },
 
   /**
