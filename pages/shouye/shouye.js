@@ -1,7 +1,131 @@
 // pages/shouye/shouye.js
+import * as echarts from '../../ec-canvas/echarts';
 const aliSdk = require("../../utils/aliIot-sdk.js")
 const app = getApp()
 
+function initChart(canvas, width, height) {
+  const chart = echarts.init(canvas, null, {
+    width: width,
+    height: height
+  });
+  canvas.setChart(chart);
+  var option = {
+    title: {
+      left: 'center'
+    },
+    color: ["#37A2DA"],
+    legend: {
+      data: ['A','B'],
+      top: 20,
+      left: 'center',
+      backgroundColor: '#dbdbdb',
+      z: 100
+    },
+    grid: {
+        left: 0,//折线图距离左边距
+        right: 50,//折线图距离右边距
+        top: 30,//折线图距离上边距
+        bottom: 10,
+        containLabel: true
+    },
+    tooltip: {
+      show: true,
+      trigger: 'axis'
+    },
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: app.globalData.Temp_h,
+      // show: false
+      axisLabel: {
+        interval: 0,
+        rotate: 90, // 90度角倾斜显示
+        textStyle: {
+          color: '#00c5d7'
+        }
+      },
+    },
+    yAxis: {
+      x: 'center',
+      type: 'value',
+      splitLine: {
+        lineStyle: {
+          type: 'dashed'
+        }
+      }
+      // show: false
+    },
+    dataZoom: [{
+      type: 'slider', //图表下方的伸缩条
+      realtime: true
+    }],
+/*
+      // axisTick: {
+      //   alignWithLabel:false
+      // },
+      // axisLine: {
+      //   lineStyle: {
+      //     color: '#666666'
+      //   }
+      // },
+      //设置x轴的样式
+      axisLabel: {
+        //横坐标最后的标注颜色变深
+        // interval: 0,
+        show: true,
+        textStyle: {
+          color: '#000',
+          fontSize: '14',
+        }
+      },
+      show: true
+    },
+    yAxis: {
+      name: '值',
+      x: 'center',
+      type: 'value',
+      splitLine: {
+        lineStyle: {
+          type: 'solid'
+        }
+      },
+      //设置y轴字体样式
+      axisLabel: {
+        show: true,
+        textStyle: {
+          color: '#000',
+          fontSize: '14',
+        }
+      },
+      show: true
+    },*/
+    /*series: [{
+      name: 'A',
+      type: 'line',
+      smooth: true,
+      data: [-50,-18, 45, 65, 30, 78, 40, 0]
+    },{
+        name: 'B',
+        type: 'line',
+        smooth: true,
+        data: [-26, -12, 40, 56, 85, 65, 20, 10]
+      }]*/
+  };
+  chart.setOption(option);
+  return chart;
+}
+//引入SDK核心类
+var QQMapWX = require('../../utils/qqmap-wx-jssdk.js');
+// 实例化API核心类
+var qqmapsdk;
+/*Page({
+    onLoad: function () {
+        // 实例化API核心类
+        qqmapsdk = new QQMapWX({
+            key: '6OLBZ-JPD64-7GJUT-XWAB5-H3ONT-5HFLX'
+        });
+    },
+*/
 Page({
   data: {
     GPS:"暂无位置信息",
@@ -15,11 +139,13 @@ Page({
     bgTextStyle: 'dark',
     scrollTop: undefined,
     nbLoading: false, 
+    ec: {
+      onInit: initChart
+    }
   },
   //下拉刷新 待修改！
   onLoad() {
     var math = '$$ CO_2 $$'
-
     let result = app.towxml(math, 'markdown', {
       base: 'http://towxml.vvadd.com/?tex', // 相对资源的base路径
       theme: 'light', // 主题，默认`light`
@@ -29,7 +155,6 @@ Page({
         }
       }
     });
- 
     // 更新解析数据
     this.setData({
       article: result,
@@ -40,6 +165,9 @@ Page({
         //nbLoading: true,
       })
     }, 5000)*/
+    qqmapsdk = new QQMapWX({
+      key: '6OLBZ-JPD64-7GJUT-XWAB5-H3ONT-5HFLX'
+    });
   },
 /**
    * 生命周期函数--监听页面初次渲染完成
@@ -52,8 +180,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.loadData()
-
+    this.loadData();
+    this.loadData_history()
   },
 //通过封装的sdk读取物联网平台数据
 loadData: function () {
@@ -77,7 +205,8 @@ loadData: function () {
           complete: () => {}
         })
         that.setPropertyData(null)
-      } else {
+      } 
+      else {
         that.setPropertyData(res.data.Data.List.PropertyStatusInfo)
       }
     },
@@ -96,12 +225,23 @@ loadData: function () {
     })
 },
 //设置前端数据
+
 setPropertyData: function (infos) {
   var that = this
   if (infos) {
     var propertys = that.convertPropertyStatusInfo(infos)
+    const latitude=propertys.GeoLocation.Latitude
+    const longitude=propertys.GeoLocation.Longitude
+    console.log(latitude)
+    console.log(5555)
+    qqmapsdk.reverseGeocoder({//SDK调用
+      location: { latitude, longitude },
+      success: function (res) {
+      console.log(res)
+     }
+    }),
     that.setData({
-      //GPS:propertys.GPS,
+      GPS:propertys.GeoLocation,
       Temp: propertys.IndoorTemperature,
       Humidity: propertys.CurrentHumidity,
       co2: propertys.data,
@@ -115,7 +255,6 @@ setPropertyData: function (infos) {
     })
   }
 },
-
 //将返回结果转成key,value的json格式方便使用
 convertPropertyStatusInfo: function (infos) {
   var data = {}
@@ -125,7 +264,64 @@ convertPropertyStatusInfo: function (infos) {
   return data
 },
 
-//跳动到某个位置  以下皆是
+//历史数据QueryDevicePropertyData
+/*StartTime=1516538300303,
+      EndTime=1516541900303,
+      PageSize=10,
+      Asc=1
+      lastActiveTime=1629280811872
+      */
+loadData_history: function () {
+  var that = this
+  aliSdk.request({
+      Action: "QueryDevicePropertyData",
+      ProductKey: app.globalData.productKey,
+      DeviceName: "test01",
+      Identifier:"室内温度",
+      StartTime:1527000000012,
+      EndTime:1527824610402,
+      PageSize:10,
+      Asc:1
+    }, {
+      method: "POST"
+    },
+    (res) => {
+      console.log("success2")
+      console.log(res) //查看返回response数据
+      if (res.data.Code) {
+        console.log("eeee")
+        wx.showToast({
+          title: '设备连接失败',
+          icon: 'none',
+          duration: 1000,
+          complete: () => {}
+        })
+       // that.setPropertyData(null)
+      } 
+      else {
+        for (var i = 0; i < res.data.Data.List.PropertyInfo.length; i++) {
+          //将数据库的数据 遍历到每个对应的数组中 
+          app.globalData.Temp_h[i] = res.data.Data.List.PropertyInfo[i].IndoorTemperature
+        }  
+        console.log(app.globalData.Temp_h)
+        console.log("7777")
+      }
+    },
+    (_res) => {
+      console.log("fail")
+      wx.showToast({
+        title: '网络连接失败',
+        icon: 'none',
+        duration: 1000,
+        complete: () => {}
+      })
+     // this.setPropertyData(null)
+    },
+    (_res) => {
+      console.log("complete2")
+    })
+},
+/*跳动到某个位置  以下皆是
   scrollTo100: function () {
     this.setData({
       scrollTop: '200rpx'
@@ -140,7 +336,7 @@ convertPropertyStatusInfo: function (infos) {
   pageScrollDone: function (e) {
     console.log('scrolldone', e.detail)
   },
-  onPullDownRefresh() {},
+  onPullDownRefresh() {},*/
 
   /**
    * 生命周期函数--监听页面隐藏

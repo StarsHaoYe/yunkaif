@@ -19,8 +19,9 @@ App({
     deviceName: "test01",
     endpoint: "https://iot.cn-shanghai.aliyuncs.com",
     ai: "LTAI5tMcoYhyUc4CAGZs6Pfa", //AccessKeyId
-    apiVersion: '2018-01-20'
+    apiVersion: '2018-01-20',
+    Temp_h:[]
   },
   // 引入`towxml3.0`解析方法
-	towxml:require('./dist/index'),
+  towxml:require('./dist/index')
 })

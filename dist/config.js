@@ -236,7 +236,7 @@ module.exports = {
         'rich-text',
 
         // 可以解析的标签（html或markdown中会很少使用）
-        // 'canvas',
+         'canvas',
         // 'map',
         // 'slider',
         // 'scroll-view',

@@ -2,11 +2,9 @@
   "component": true,
   "usingComponents": {
     "decode": "/dist/decode",
-    "echarts": "/dist/echarts/echarts",
     "latex": "/dist/latex/latex",
     "table": "/dist/table/table",
     "todogroup": "/dist/todogroup/todogroup",
-    "yuml": "/dist/yuml/yuml",
     "img": "/dist/img/img"
   }
 }
