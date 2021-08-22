@@ -20,8 +20,8 @@ App({
     endpoint: "https://iot.cn-shanghai.aliyuncs.com",
     ai: "LTAI5tMcoYhyUc4CAGZs6Pfa", //AccessKeyId
     apiVersion: '2018-01-20',
-//<<<<<<< HEAD
-    Temp_h:[]
+    //<<<<<<< HEAD
+    Temp_h:[],
 //=======
     myname: "test01",
 

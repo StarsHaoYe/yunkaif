@@ -2,7 +2,13 @@
 import * as echarts from '../../ec-canvas/echarts';
 const aliSdk = require("../../utils/aliIot-sdk.js")
 const app = getApp()
-
+//引入SDK核心类
+var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
+// 实例化API核心类
+var qqmapsdk;
+qqmapsdk = new QQMapWX({
+  key:'6OLBZ-JPD64-7GJUT-XWAB5-H3ONT-5HFLX'
+});
 function initChart(canvas, width, height) {
   const chart = echarts.init(canvas, null, {
     width: width,
@@ -114,18 +120,7 @@ function initChart(canvas, width, height) {
   chart.setOption(option);
   return chart;
 }
-//引入SDK核心类
-var QQMapWX = require('../../utils/qqmap-wx-jssdk.js');
-// 实例化API核心类
-var qqmapsdk;
-/*Page({
-    onLoad: function () {
-        // 实例化API核心类
-        qqmapsdk = new QQMapWX({
-            key: '6OLBZ-JPD64-7GJUT-XWAB5-H3ONT-5HFLX'
-        });
-    },
-*/
+
 Page({
   data: {
     GPS:"暂无位置信息",
@@ -165,9 +160,6 @@ Page({
         //nbLoading: true,
       })
     }, 5000)*/
-    qqmapsdk = new QQMapWX({
-      key: '6OLBZ-JPD64-7GJUT-XWAB5-H3ONT-5HFLX'
-    });
   },
 /**
    * 生命周期函数--监听页面初次渲染完成
@@ -225,26 +217,29 @@ loadData: function () {
     })
 },
 //设置前端数据
-
 setPropertyData: function (infos) {
   var that = this
+  var gps
   if (infos) {
+    var gpsdata={lati:0.000000,long:0.000000}
     var propertys = that.convertPropertyStatusInfo(infos)
-    const latitude=propertys.GeoLocation.Latitude
-    const longitude=propertys.GeoLocation.Longitude
-    console.log(latitude)
-    console.log(5555)
+    this.gps_convert1(propertys.GeoLocation,gpsdata)
+    var latitude=gpsdata.lati
+    var longitude=gpsdata.long
     qqmapsdk.reverseGeocoder({//SDK调用
       location: { latitude, longitude },
+      get_poi: 1,
+      poi_options: 'policy=2;radius=3000;page_size=20;page_index=1',
       success: function (res) {
       console.log(res)
+      gps=res.result.address
+      that.setData({
+        GPS:gps,
+        Temp: propertys.IndoorTemperature,
+        Humidity: propertys.CurrentHumidity,
+        co2: propertys.data,
+      })      
      }
-    }),
-    that.setData({
-      GPS:propertys.GeoLocation,
-      Temp: propertys.IndoorTemperature,
-      Humidity: propertys.CurrentHumidity,
-      co2: propertys.data,
     })
   } else {
     that.setData({
@@ -255,6 +250,36 @@ setPropertyData: function (infos) {
     })
   }
 },
+//gps位置转换
+gps_convert1:function(infos,gpstemp){
+  let j
+  if(infos[13]=='.'){
+    if(infos[34]=='.'){j=0}
+    else if(infos[35]=='.'){j=1}
+    else if(infos[36]=='.'){j=2}
+    gpstemp.lati=this.gps_convert2(infos,12,0)
+    gpstemp.long=this.gps_convert2(infos,33,j)
+  }
+  else if(infos[14]=='.'){
+    if(infos[35]=='.'){j=0}
+    else if(infos[36]=='.'){j=1}
+    else if(infos[37]=='.'){j=2}
+    gpstemp.lati=this.gps_convert2(infos,12,1)
+    gpstemp.long=this.gps_convert2(infos,34,j)
+  }
+},
+//GPS位置转换辅助函数
+gps_convert2:function(infos,n,j){  
+  var gtemp=0
+  let i,m=j
+  for(i=n;i<(n+8+m);i++){
+    if(i!=(n+1+m)){
+      gtemp=gtemp+infos[i]*(Math.pow(10,j));
+      j--
+    } 
+  };
+  return gtemp;
+},
 //将返回结果转成key,value的json格式方便使用
 convertPropertyStatusInfo: function (infos) {
   var data = {}
@@ -263,7 +288,6 @@ convertPropertyStatusInfo: function (infos) {
   })
   return data
 },
-
 //历史数据QueryDevicePropertyData
 /*StartTime=1516538300303,
       EndTime=1516541900303,
@@ -278,8 +302,8 @@ loadData_history: function () {
       ProductKey: app.globalData.productKey,
       DeviceName: "test01",
       Identifier:"室内温度",
-      StartTime:1527000000012,
-      EndTime:1527824610402,
+      StartTime:1600724610402,
+      EndTime:1618551096876,
       PageSize:10,
       Asc:1
     }, {
@@ -303,6 +327,7 @@ loadData_history: function () {
           //将数据库的数据 遍历到每个对应的数组中 
           app.globalData.Temp_h[i] = res.data.Data.List.PropertyInfo[i].IndoorTemperature
         }  
+        console.log(res.data.Data.List.PropertyInfo)
         console.log(app.globalData.Temp_h)
         console.log("7777")
       }
