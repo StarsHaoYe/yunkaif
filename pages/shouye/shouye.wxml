@@ -67,11 +67,12 @@
   </view>
   <view class="font">历史变化</view>
   <view class="container1">
-  <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+    <ec-canvas id="mychart1" canvas-id="mychart-line" ec="{{ ec1 }}"></ec-canvas>
+   
 </view>
-
 </view>
 <!--<navigator url="./new">
+ <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec2 }}"></ec-canvas>
   <button>跳另一个页面</button>
 </navigator>
 <button bindtap="scrollTo100">点击跳到 200rpx 处</button>
@@ -80,4 +81,6 @@
     启动 5s 后会尝试改变页面样式
   </text>
   <towxml nodes="{{article}}"/> 
+
+  
 </view>-->

@@ -20,8 +20,11 @@ App({
     endpoint: "https://iot.cn-shanghai.aliyuncs.com",
     ai: "LTAI5tMcoYhyUc4CAGZs6Pfa", //AccessKeyId
     apiVersion: '2018-01-20',
-    //<<<<<<< HEAD
-    Temp_h:[],
+    Time:{},
+    Temp_h:[],   
+    Humid_h:[],
+    CO2_h:[],
+    histroyData:[{Temp_h:[50],Humid_h:[50],CO2_h:[50]}],
 //=======
     myname: "test01",
 
