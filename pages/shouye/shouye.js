@@ -53,8 +53,8 @@ Page({
     tips:"大自然的每一个领域都是美妙绝伦的。————亚里士多德",
     //下面三个数据有关下拉刷新
     bgTextStyle: 'dark',
-    scrollTop: undefined,
-    nbLoading: false, 
+    //scrollTop: undefined,
+    //nbLoading: false, 
     ec1: {
       lazyLoad: true // 延迟加载
     },
@@ -370,22 +370,28 @@ setOption: function (Chart) {
   onReady: function () {
 
   },
-/*跳动到某个位置  以下皆是
-  scrollTo100: function () {
+  pageScroll: function () {
+   
+  },
+//跳动到某个位置  以下皆是
+  /*scrollTo100: function () {
     this.setData({
       scrollTop: '200rpx'
     })
   },
   pageScroll: function (e) {
-    console.log('scroll', e.detail)
+    console.log(e)
   },
   pageResize: function (e) {
     console.log('resize', e.detail)
   },
   pageScrollDone: function (e) {
     console.log('scrolldone', e.detail)
+  },*/
+
+  onPullDownRefresh() {
+
   },
-  onPullDownRefresh() {},*/
 
   /**
    * 生命周期函数--监听页面隐藏
