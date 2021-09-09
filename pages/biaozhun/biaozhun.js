@@ -7,10 +7,13 @@ Page({
   data: {
     items:[
       {value: 'CHN', name: '中国', checked: 'true'},
-      {value: 'USA', name: '美国', checked: 'false'},
-      {value: 'EU', name: '欧盟', checked: 'false'},
-      {value: 'FRE', name: '自定义', checked: 'false'}
-    ]
+      {value: 'USA', name: '美国'},
+      {value: 'EU', name: '欧盟'},
+      {value: 'FRE', name: '自定义'}
+    ],
+    biaozhun_CHN:{
+
+    }
   },
 
   radioChange(e) {
@@ -24,7 +27,12 @@ Page({
       }
     }
     this.setData(changed)
-    
+    console.log(e)
+  },
+
+  formSubmit(e){
+    console.log(e)
+    console.log(this.data.items)
   },
 
   /**
