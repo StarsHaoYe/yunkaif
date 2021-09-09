@@ -21,7 +21,7 @@ App({
     ai: "LTAI5tMcoYhyUc4CAGZs6Pfa", //AccessKeyId
     apiVersion: '2018-01-20',
 //<<<<<<< HEAD
-    Temp_h:[]
+    Temp_h:[],
 //=======
     myname: "test01",
 

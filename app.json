@@ -1,10 +1,10 @@
 {
   "pages": [ 
+    "pages/shouye/shouye",
+    "pages/index/index",
     "pages/biaozhun/biaozhun",
     "pages/shezhi/shezhi",
     "pages/mine/mine",
-    "pages/shouye/shouye",
-    "pages/index/index",
     "pages/logs/logs",
     "pages/sensors/sensors",
     "pages/iot/iottest",
