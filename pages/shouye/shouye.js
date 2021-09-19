@@ -11,9 +11,8 @@ var Humid_h=[];
 var CO2_h=[];
 var Id_set=["data","IndoorTemperature","CurrentHumidity"];
 var Chart1=null;
-var Chart2=null;
 var option1={};
-var option2={};
+
 
 //Unix时间戳转化为北京时间
 function toDate(number) {
@@ -27,30 +26,16 @@ function toDate(number) {
   var SM =date.getMilliseconds() < 10 ? '0' + date.getMilliseconds():date.getMilliseconds();
   return (Y + M + D + H+Minu)
   }
-     /* axisLabel: {
-        interval: 0,
-        rotate: 90, // 90度角倾斜显示
-        textStyle: {
-          color: '#00c5d7'
-        }
-       axisTick: {alignWithLabel:false },
-     axisLine: {lineStyle: {color: '#666666'}},
-      //设置x轴的样式
-      axisLabel: {
-        //横坐标最后的标注颜色变深
-        // interval: 0,
-        show: true,
-        textStyle: {color: '#000',fontSize: '14',}}*/
-
 Page({
-  data: {
-    GPS:"暂无位置信息",
+  data: {    
+    GPS:"暂无位置信息",//设备数据
     Temp: "--",
     Humidity: "--",
     co2: "--",
     PM10: "--",
     level:"优",
     tips:"大自然的每一个领域都是美妙绝伦的。————亚里士多德",
+    navState: 0,//导航状态
     //下面三个数据有关下拉刷新
     bgTextStyle: 'dark',
     //scrollTop: undefined,
@@ -60,7 +45,29 @@ Page({
     },
     ec2: {
       lazyLoad: true // 延迟加载
-    }
+    },
+    //导航栏
+    select: 0,
+    height: 0,
+    sortList: [{
+        name: 'test01'
+      },
+      {
+        name: 'test02'
+      },
+      {
+        name: 'test03'
+      },
+      {
+        name: 'test04'
+      },
+      {
+        name: 'test05'
+      },
+      {
+        name: 'test06'
+      },
+    ],
   },
   //下拉刷新 待修改！ 
   /*setTimeout(() => {
@@ -69,9 +76,40 @@ Page({
         //nbLoading: true,
       })
     }, 5000)*/
+     //监听滑块
+     bindchange(e) {
+      // console.log(e.detail.current)
+      let index = e.detail.current;
+      this.setData({
+        navState:index
+      })
+    },
+    //点击导航
+    navSwitch: function(e) {
+      let index = e.currentTarget.dataset.index;
+      this.setData({
+        navState:index
+      })
+    },
+    upper(e) {
+      console.log(e)
+    },
+    lower(e) {
+      console.log(e)
+    },
+    scroll(e) {
+      console.log(e)
+    },
+    scrollToTop() {
+      this.setAction({
+        scrollTop: 0
+      })
+    },
+  
   onLoad() {
-    this.echartsComponnet1 = this.selectComponent('#mychart1');
+    this.echartsComponnet1 = this.selectComponent('#mychart1');//画图
     //this.echartsComponnet2 = this.selectComponent('#mychart2');
+    this.watchHeight();//watch  swiper高度
     (async ()=>{
       let temp_h=[];//临时变量 
       for(var i=0;i<3;i++){
@@ -86,6 +124,46 @@ Page({
    })()
     this.Latex();   
   },
+
+// 触发tab导航栏
+activeTab(e) {
+  var index = e.currentTarget.dataset.index
+  this.setData({
+    select: index
+  })
+  this.generalEv()
+  this.watchHeight()
+},
+// 滑动swiper
+activeSw(e) {
+  var index = e.detail.current
+  this.setData({
+    select: index
+  })
+  this.generalEv()
+  this.watchHeight()
+},
+
+// 监听swiper高度
+watchHeight() {
+  var query = wx.createSelectorQuery()
+  query.select('.box').boundingClientRect((res) => {
+    this.setData({
+      height: parseInt(res.height)
+    })
+  }).exec()
+},
+// 初始化值
+generalEv() {
+  // 回到顶部
+  wx.pageScrollTo({
+    scrollTop: 0
+  })
+},
+onReachBottom: function () {
+  this.watchHeight()
+},
+
 //数学公式
 Latex: function(){
   var math = '$$ CO_2 $$'
@@ -404,21 +482,17 @@ setOption: function (Chart) {
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
-  },
+  onShareAppMessage: function () {},
 
 })

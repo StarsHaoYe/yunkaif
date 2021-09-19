@@ -1,14 +1,15 @@
 {
-  "pages": [  "pages/shouye/shouye",
+  "pages": [
+    "pages/shouye/shouye",
     "pages/biaozhun/biaozhun",
     "pages/shezhi/shezhi",
     "pages/mine/mine",
-   
     "pages/index/index",
     "pages/logs/logs",
     "pages/sensors/sensors",
     "pages/iot/iottest",
-    "pages/config/config"
+    "pages/config/config",
+    "pages/shouye1/shouye1"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -16,7 +17,7 @@
     "navigationBarTitleText": "空气质量传感云平台",
     "navigationBarTextStyle": "white",
     "enablePullDownRefresh": true,
-    "backgroundColor": "#ffffff" 
+    "backgroundColor": "#ffffff"
   },
   "tabBar": {
     "list": [

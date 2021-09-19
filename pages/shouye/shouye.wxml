@@ -1,76 +1,79 @@
 <!--pages/shouye/shouye.wxml-->
-<page-meta
-  background-text-style="{{bgTextStyle}}"
-  scroll-top="{{scrollTop}}"
-  scroll-duration="1000"
-  page-style="color: black"
-  bindscroll="pageScroll"
-  bindresize="pageResize"
-  bindscrolldone="pageScrollDone"
->
-<navigation-bar
-    title="{{nbTitle}}"
-    loading="{{nbLoading}}"
-    background-color="#66cccc"
-    color-animation-timing-func="easeIn"
-/>
+<page-meta background-text-style="{{bgTextStyle}}" scroll-top="{{scrollTop}}" scroll-duration="1000"
+  page-style="color: black" bindscroll="pageScroll" bindresize="pageResize" bindscrolldone="pageScrollDone">
+  <navigation-bar title="{{nbTitle}}" loading="{{nbLoading}}" background-color="#66cccc"
+    color-animation-timing-func="easeIn" />
 </page-meta>
-
-<view class="container">
-  <view class="header">
-    <view class="gps">
-      <image src='/icon/定位.png' mode='widthFix'></image>
-      <text>{{GPS}}</text>
+<!-- 页面 -->
+<view class="banner">
+  <scroll-view scroll-x="true" scroll-with-animation="true" scroll-into-view="nav-{{select > 0 ? select -1 : select}}">
+    <view wx:for="{{sortList}}" wx:for-index="index" wx:key="index" id="nav-{{index}}"
+      class="sort {{index == select ? 'choose' : ''}}" data-index='{{index}}' bindtap="activeTab">
+      {{item.name}}
+      <view class="line" wx:if="{{index == select}}"></view>
     </view>
-    <view class="level">
-    <text>{{level}}\n</text>
-    <text class="tips">{{tips}}</text>
-    </view>
-  </view>
-  <view class="font">污染物浓度</view>
-  
-  <view class="table">
-    <view class="table-row">
-      
-      <view class="table-column">
-        <text class="table-level">优</text> 
-        <text>温度\n{{Temp}}°C</text> 
-      </view>
-      <view class="table-column">
-        <text class="table-level">优</text> 
-        <text>湿度\n{{Humidity}} %</text>  
-      </view>
-      <view class="table-column">
-        <text class="table-level">优</text>
-        <view class="table-column-row">
-        <towxml nodes="{{article}}"/>
-        <text>{{co2}} %</text></view> 
-      </view>
-
-    </view>
-		<view class="table-row">
-
-		  <view class="table-column">
-        <text class="table-level">优</text> 
-        <text>温度\n{{Temp}}°C</text> 
-      </view>
-      <view class="table-column">
-        <text class="table-level">优</text> 
-        <text>湿度\n{{Humidity}} %</text>  
-      </view>
-      <view class="table-column">
-        <text class="table-level">优</text> 
-        <text>co2</text>
-      </view>
-     
-    </view>
-  </view>
-  <view class="font">历史变化</view>
-  <view class="container1">
-    <ec-canvas id="mychart1" canvas-id="mychart-line" ec="{{ ec1 }}"></ec-canvas>
-   
+  </scroll-view>
 </view>
-</view>
+<swiper style="height:{{height}}px" current="{{select}}" duration="300" bindchange="activeSw">
+  <swiper-item wx:for="{{sortList.length}}" wx:key="index">
+    <view class="box">
+        <view class="header">
+          <view class="gps">
+            <image src='/icon/定位.png' mode='widthFix'></image>
+            <text>{{GPS}}</text>
+          </view>
+          <view class="level">
+            <text>{{level}}\n</text>
+            <text class="tips">{{tips}}</text>
+          </view>
+        </view>
+        <view class="font">污染物浓度</view>
+
+        <view class="table">
+          <view class="table-row">
+
+            <view class="table-column">
+              <text class="table-level">优</text>
+              <text>温度\n{{Temp}}°C</text>
+            </view>
+            <view class="table-column">
+              <text class="table-level">优</text>
+              <text>湿度\n{{Humidity}} %</text>
+            </view>
+            <view class="table-column">
+              <text class="table-level">优</text>
+              <view class="table-column-row">
+                <towxml nodes="{{article}}" />
+                <text>{{co2}} %</text>
+              </view>
+            </view>
+
+          </view>
+          <view class="table-row">
+
+            <view class="table-column">
+              <text class="table-level">优</text>
+              <text>温度\n{{Temp}}°C</text>
+            </view>
+            <view class="table-column">
+              <text class="table-level">优</text>
+              <text>湿度\n{{Humidity}} %</text>
+            </view>
+            <view class="table-column">
+              <text class="table-level">优</text>
+              <text>co2</text>
+            </view>
+
+          </view>
+        </view>
+        <view class="font">历史变化</view>
+        <view class="container1">
+          <ec-canvas id="mychart1" canvas-id="mychart-line" ec="{{ ec1 }}"></ec-canvas>
+        </view>
+    </view>
+  </swiper-item>
+</swiper>
+
 <!--<navigator url="./new">
  <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec2 }}"></ec-canvas>
   <button>跳另一个页面</button>
@@ -80,7 +83,5 @@
   <text>
     启动 5s 后会尝试改变页面样式
   </text>
-  <towxml nodes="{{article}}"/> 
-
-  
+  <towxml nodes="{{article}}"/>  
 </view>-->
