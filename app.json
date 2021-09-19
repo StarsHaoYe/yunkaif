@@ -1,10 +1,19 @@
 {
+//<<<<<<< HEAD
   "pages": [
     "pages/shouye/shouye",
     "pages/biaozhun/biaozhun",
     "pages/shezhi/shezhi",
     "pages/mine/mine",
     "pages/index/index",
+//=======
+  "pages": [ 
+    "pages/shouye/shouye",
+    "pages/index/index",
+    "pages/biaozhun/biaozhun",
+    "pages/shezhi/shezhi",
+    "pages/mine/mine",
+//>>>>>>> 646deaa1d238fce4348bb4042ae9860906469011
     "pages/logs/logs",
     "pages/sensors/sensors",
     "pages/iot/iottest",

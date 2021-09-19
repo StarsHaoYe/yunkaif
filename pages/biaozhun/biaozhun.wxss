@@ -17,7 +17,7 @@
   font-weight: bold;
   font-family:KaiTi;
   text-align: left;
-  margin-top: 30rpx;
+  margin-top: 60rpx;
   margin-left: 60rpx;
 }
 
@@ -45,6 +45,7 @@
 
 .biaozhun-head {
   height: 60rpx;
+  width: fit-content;
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -52,6 +53,7 @@
 
 .biaozhun {
   height: 50rpx;
+  width: fit-content;
   display: flex;
   flex-direction: row;
 }
@@ -62,7 +64,7 @@
   align-items: center;
   text-align: center;
   font-size: 14px;
-  border: 2px gainsboro solid;
+  border: 4rpx gainsboro solid;
 }
 
 .biaozhun-detail {
@@ -70,7 +72,7 @@
   align-items: center;
   text-align: center;
   font-size: 14px;
-  border: gainsboro solid;
+  border: 4rpx gainsboro solid;
 }
 
 .box {
@@ -82,4 +84,14 @@
   align-items: center;
   margin: 0rpx;
   padding: 3px 0px;
+}
+
+.biaozhun-label {
+  width: fit-content;
+  height: auto;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: 0px 3px 5px 1px gainsboro;
+  border-radius: 12rpx;
+  margin: 12rpx;
 }
