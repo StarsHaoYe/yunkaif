@@ -1,7 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "towxml":"../../dist/towxml",
     "ec-canvas": "../../ec-canvas/ec-canvas"
   },
   "enablePullDownRefresh": true,

@@ -6,14 +6,12 @@
 </page-meta>
 <!-- 页面 -->
 <view class="banner">
-  <scroll-view scroll-x="true" scroll-with-animation="true" scroll-into-view="nav-{{select > 0 ? select -1 : select}}">
-    <view wx:for="{{sortList}}" wx:for-index="index" wx:key="index" id="nav-{{index}}"
-      class="sort {{index == select ? 'choose' : ''}}" data-index='{{index}}' bindtap="activeTab">
+    <view wx:for="{{sortList}}" wx:for-index="index" wx:key="index" class="sort {{index == select ? 'choose' : ''}}" data-index='{{index}}' bindtap="activeTab">
       {{item.name}}
       <view class="line" wx:if="{{index == select}}"></view>
     </view>
-  </scroll-view>
 </view>
+
 <swiper style="height:{{height}}px" current="{{select}}" duration="300" bindchange="activeSw">
   <swiper-item wx:for="{{sortList.length}}" wx:key="index">
     <view class="box">
@@ -23,65 +21,49 @@
             <text>{{GPS}}</text>
           </view>
           <view class="level">
-            <text>{{level}}\n</text>
-            <text class="tips">{{tips}}</text>
+            <image src='/icon/温度.png' mode='widthFix'></image>
+            <text>温度   {{Temp}}℃ \n</text>
+            <image src='/icon/湿度.png' mode='widthFix'></image>
+            <text>湿度   {{Humidity}} %</text>
           </view>
         </view>
-        <view class="font">污染物浓度</view>
+        
+        <view class="fontKQZL">空气质量</view>
+        <text class="fontgps">time : {{ltime}}\n</text>
+        <text class="fontgps">lat : {{latitu}}   </text>
+        <text class="fontgps">lng : {{longitu}}\n</text>
+        <text class='fontPM'>{{PM2_5}}</text>
+        <text class='fontPMLEVEL'>轻度污染\n</text>
+        <text class='fontTishi'>PM2.5浓度较高</text>
 
         <view class="table">
           <view class="table-row">
-
-            <view class="table-column">
-              <text class="table-level">优</text>
-              <text>温度\n{{Temp}}°C</text>
-            </view>
-            <view class="table-column">
-              <text class="table-level">优</text>
-              <text>湿度\n{{Humidity}} %</text>
-            </view>
-            <view class="table-column">
-              <text class="table-level">优</text>
-              <view class="table-column-row">
-                <towxml nodes="{{article}}" />
-                <text>{{co2}} %</text>
-              </view>
-            </view>
-
+            
           </view>
           <view class="table-row">
 
             <view class="table-column">
-              <text class="table-level">优</text>
-              <text>温度\n{{Temp}}°C</text>
+              <text>温度\n{{Temp}}℃</text>
             </view>
             <view class="table-column">
-              <text class="table-level">优</text>
               <text>湿度\n{{Humidity}} %</text>
             </view>
             <view class="table-column">
-              <text class="table-level">优</text>
-              <text>co2</text>
+              <text>co2\n{{PM25}} %</text>
             </view>
 
           </view>
         </view>
-        <view class="font">历史变化</view>
+        <view class="font">历史数据</view>
         <view class="container1">
           <ec-canvas id="mychart1" canvas-id="mychart-line" ec="{{ ec1 }}"></ec-canvas>
         </view>
-    </view>
-  </swiper-item>
+      </view>
+ </swiper-item>
 </swiper>
-
+ 
 <!--<navigator url="./new">
  <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec2 }}"></ec-canvas>
   <button>跳另一个页面</button>
 </navigator>
-<button bindtap="scrollTo100">点击跳到 200rpx 处</button>
-<view class="intro">
-  <text>
-    启动 5s 后会尝试改变页面样式
-  </text>
-  <towxml nodes="{{article}}"/>  
 </view>-->

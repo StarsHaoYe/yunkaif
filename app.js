@@ -13,12 +13,13 @@ App({
       }
     })
   },
+
   globalData: {
-    as: "fckba2VKNHJvCTeJQfZWFOq9rZWALW",//AccessKey Secret
-    productKey: "a13oNCbs4id",
-    deviceName: "test01",
+    as: "kinbeCBNktSOVZWabuKcjLqacDvFtt",//AccessKey Secret
+    productKey: "a1QpJvLtxim",
+    deviceName: "EC20",
     endpoint: "https://iot.cn-shanghai.aliyuncs.com",
-    ai: "LTAI5tMcoYhyUc4CAGZs6Pfa", //AccessKeyId
+    ai: "LTAI5tDHsYbtmBkxeKgpBqdH", //AccessKeyId
     apiVersion: '2018-01-20',
     Time:{},
     Temp_h:[],   
@@ -26,34 +27,37 @@ App({
     CO2_h:[],
     histroyData:[{Temp_h:[50],Humid_h:[50],CO2_h:[50]}],
 //=======
-    myname: "test01",
-
+    myname: "EC20",
+ 
     shebeiList:[//多设备数组，将独立的设备信息转移到如下数组中
       {
-        myname: "test01", //可自定义的设备名
-        deviceName: "test01", //物联网平台的设备名
-        as: "fckba2VKNHJvCTeJQfZWFOq9rZWALW",//AccessKey Secret
-        productKey: "a13oNCbs4id",
-        ai: "LTAI5tMcoYhyUc4CAGZs6Pfa" //AccessKeyId
+        myname: "EC20", //可自定义的设备名
+        deviceName: "EC20", //物联网平台的设备名
+        as: "kinbeCBNktSOVZWabuKcjLqacDvFtt",//AccessKey Secret
+        productKey: "a1QpJvLtxim",
+        ai: " LTAI5tDHsYbtmBkxeKgpBqdH" //AccessKeyId
       },
       {//这是复制的：）
         myname: "test02", //可自定义的设备名
         deviceName: "test02", //物联网平台的设备名
-        as: "fckba2VKNHJvCTeJQfZWFOq9rZWALW",//AccessKey Secret
-        productKey: "a13oNCbs4id",
-        ai: "LTAI5tMcoYhyUc4CAGZs6Pfa" //AccessKeyId
+        as: "kinbeCBNktSOVZWabuKcjLqacDvFtt",//AccessKey Secret
+        productKey: "a1QpJvLtxim",
+        ai: "LTAI5tDHsYbtmBkxeKgpBqdH" //AccessKeyId
       }
     ],
-
-    standard:{
+   /* standard:{
       Temp: 24,
       Humidity: 25,
       co2: 10,
       PM25: 26,
       PVOC: 30
-    }
-//>>>>>>> 64c247fd81c1974ad52b321413952c5bc4072109
+    }*/
   },
-  // 引入`towxml3.0`解析方法
-  towxml:require('./dist/index')
+  globalData1: {
+    productKey: "a1QpJvLtxim",
+    deviceName: "EC20",
+    endpoint: "https://iot.cn-shanghai.aliyuncs.com",
+    ai: "LTAI5tDHsYbtmBkxeKgpBqdH", //AccessKeyId
+    apiVersion: '2018-01-20'
+    }
 })
